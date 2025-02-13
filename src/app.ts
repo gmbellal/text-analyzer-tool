@@ -5,6 +5,7 @@ import { userRoutes } from './routes/userRoutes';
 import { authRoutes } from './routes/authRoutes';
 import { textRoutes } from './routes/textRoutes';
 import { authMiddleware } from './middlewares/authMiddleware';
+import { throttlingMiddleware } from './middlewares/throttlingMiddleware';
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', userRoutes);  // Routes for the user APIs
 app.use('/api/auth', authRoutes);  // Routes for the auth APIs
-app.use('/api/texts', authMiddleware, textRoutes);  // Routes for the text APIs :: Protected by authMiddleware
+app.use('/api/texts', authMiddleware, throttlingMiddleware, textRoutes);  // Routes for the text APIs :: Protected by authMiddleware
 
 
 // MongoDB Connection

@@ -10,5 +10,6 @@ export const config = {
   redisPassword: process.env.REDIS_PASSWORD || '',
   secretKey: process.env.SECRET_KEY!,
   expiresIn: process.env.EXPIRES_IN!,
-  saltRounds: process.env.SALT_ROUNDS!
+  saltRounds: process.env.SALT_ROUNDS!,
+  maxThrottlLimit: process.env.MAX_THROTTL_LIMIT!,
 };
