@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { config } from './config';
+import { userRoutes } from './routes/userRoutes';
 
 const app = express();
 
@@ -10,6 +11,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('GET request to the homepage')
 })
+
+app.use('/api/user', userRoutes);  // Routes for the user APIs
+
 
 // MongoDB Connection
 mongoose.set('strictQuery', false);
