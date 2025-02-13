@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { config } from './config';
 import { userRoutes } from './routes/userRoutes';
+import { authRoutes } from './routes/authRoutes';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRoutes);  // Routes for the user APIs
+app.use('/api/auth', authRoutes);  // Routes for the auth APIs
 
 
 // MongoDB Connection
