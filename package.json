@@ -1,7 +1,7 @@
 {
     "name": "text-analyzer-tool",
     "version": "1.0.0",
-    "description": "A text analysis tool with API throttling, OAuth2.0 authentication, and log visualization.",
+    "description": "A text analysis tool with API throttling, jwt authentication, Redis and log visualization.",
     "main": "dist/app.js",
     "scripts": {
         "start": "ts-node src/app.ts",
