@@ -11,15 +11,18 @@ const app = express();
 
 app.use(express.json());
 
-
+// Default route
 app.get('/', (req, res) => {
     res.send('GET request to the homepage')
 })
 
+// Routes
 app.use('/api/user', userRoutes);  // Routes for the user APIs
 app.use('/api/auth', authRoutes);  // Routes for the auth APIs
 app.use('/api/texts', authMiddleware, throttlingMiddleware, textRoutes);  // Routes for the text APIs :: Protected by authMiddleware
 
+// Export the app object
+export { app };
 
 // MongoDB Connection
 mongoose.set('strictQuery', false);
@@ -28,3 +31,5 @@ mongoose.connect(config.mongoUri).then(() => console.log('Connected to MongoDB')
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);
 });
+
+

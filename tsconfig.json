@@ -1,30 +1,31 @@
 {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "baseUrl": "./",
-      "types": ["node"],
-      "resolveJsonModule": true,
-      "paths": {
-        "@controllers/*": ["src/controllers/*"],
-        "@models/*": ["src/models/*"],
-        "@services/*": ["src/services/*"],
-        "@middlewares/*": ["src/middlewares/*"],
-        "@utils/*": ["src/utils/*"],
-        "@routes/*": ["src/routes/*"]
-      }
-    },
-    "include": [
-      "src/**/*",  // Include all source files
-    ],
-    "exclude": [
-      "node_modules",
-      "dist"
-    ]
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "types": ["jest", "node"],
+    "resolveJsonModule": true,
+    "paths": {
+      "@controllers/*": ["src/controllers/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@utils/*": ["src/utils/*"],
+      "@routes/*": ["src/routes/*"]
+    }
+  },
+  "include": [
+    "src/**/*",  // Include all source files
+    "test/**/*"  // Include test files in the test directory
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
