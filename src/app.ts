@@ -17,8 +17,8 @@ app.get('/', (req, res) => {
 })
 
 // Routes
-app.use('/api/user', userRoutes);  // Routes for the user APIs
-app.use('/api/auth', authRoutes);  // Routes for the auth APIs
+app.use('/api/user', throttlingMiddleware, userRoutes);  // Routes for the user APIs
+app.use('/api/auth', throttlingMiddleware, authRoutes);  // Routes for the auth APIs
 app.use('/api/texts', authMiddleware, throttlingMiddleware, textRoutes);  // Routes for the text APIs :: Protected by authMiddleware
 
 
