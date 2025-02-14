@@ -12,7 +12,7 @@ export class TextController {
     res.json(text);
   }
 
-
+  
   static async getTextList(req: Request, res: Response) {
     TextService.getTextList(req.user.id).then((texts) => {
       res.status(200).json(texts);
@@ -25,6 +25,9 @@ export class TextController {
 
   static async getTextById(req: Request, res: Response) {
     TextService.getTextById(req.params.id).then((text) => {
+      if(!text) {
+        return res.status(404).json({ error: 'Text not found' });
+      }
       if(`${text.createdBy.id}` !== req.user.id) {
         return res.status(403).json({ error: 'Unauthorized to view this text' });
       }else{
@@ -40,6 +43,9 @@ export class TextController {
 
   static async updateTextById(req: Request, res: Response) {
     TextService.getTextById(req.params.id).then((text) => {
+      if(!text) {
+        return res.status(404).json({ error: 'Text not found' });
+      }
       if(`${text.createdBy.id}` !== req.user.id) {
         return res.status(403).json({ error: 'Unauthorized to update this text' });
       }else{
@@ -57,6 +63,9 @@ export class TextController {
 
   static async deleteTextById(req: Request, res: Response) {
     TextService.getTextById(req.params.id).then((text) => {
+      if(!text) {
+        return res.status(404).json({ error: 'Text not found' });
+      }
       if(`${text.createdBy.id}` !== req.user.id) {
         return res.status(403).json({ error: 'Unauthorized to delete this text' });
       }else{
