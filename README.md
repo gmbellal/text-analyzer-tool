@@ -34,7 +34,7 @@ This project provides a set of APIs to analyze text, including word count, chara
 6. Run the app with `npm run build` for build project
 
 ## Run Tests
-1. Run the app with `npm run watch` for testing
+1. Run the app with `npm run test` for testing
 
 
 Note: You must set MAX_THROTTL_LIMIT to at least 10 to avoid throttling limitations. By default, it is set to 1, meaning a specific IP can make only one request
