@@ -38,3 +38,6 @@ This project provides a set of APIs to analyze text, including word count, chara
 
 
 Note: You must set MAX_THROTTL_LIMIT to at least 10 to avoid throttling limitations. By default, it is set to 1, meaning a specific IP can make only one request
+
+## Additional
+Please check the Postman collection; I have added it to the repository.
