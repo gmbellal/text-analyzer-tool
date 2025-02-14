@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import {logError } from '../utils/logVisualizer';
 import { TextService } from '../services/textService';
+import { cache } from '../utils/caching'; 
 
 
 export class TextController {
@@ -9,6 +10,7 @@ export class TextController {
     const { content } = req.body;
     const createdBy: any = { id: req.user.id, name: req.user.name }; 
     const text = await TextService.createText(content, createdBy );
+    cache.delete(`textList:${req.user.id}`);
     res.json(text);
   }
 
@@ -51,6 +53,7 @@ export class TextController {
       }else{
         text.content = req.body.content;
         text.save();
+        cache.delete(`textList:${req.user.id}`);
         res.status(200).json({message: 'Text updated successfully'});
       }
     }).catch((err) => {
@@ -70,6 +73,7 @@ export class TextController {
         return res.status(403).json({ error: 'Unauthorized to delete this text' });
       }else{
         text.remove();
+        cache.delete(`textList:${req.user.id}`);
         res.status(200).json({message: 'Text deleted successfully'});
       }
     }).catch((err) => {

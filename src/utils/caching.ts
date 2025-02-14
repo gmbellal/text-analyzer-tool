@@ -38,4 +38,19 @@ export const cache = {
       throw err;
     }
   },
+
+
+  // Set data to cache with expiry
+  delete: async (key: string): Promise<void> => {
+    try {
+      console.log('Setting data to Redis:', key);
+      await client.del(key); // Delete from cache
+    } catch (err) {
+      console.error('Error deleting from Redis:', err);
+      throw err;
+    }
+  },
+
+
+
 };

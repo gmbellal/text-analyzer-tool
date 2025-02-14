@@ -7,9 +7,10 @@ export class TextService {
 
   // Method to create a new text record
   static async createText(content: string, createdBy: string): Promise<any> {
-    const newText = new Text({ content, createdBy });
+    const newText: any = new Text({ content, createdBy });
     return newText.save();
   }
+
 
 
   // Method to get text list
@@ -31,6 +32,9 @@ export class TextService {
       throw new Error(`Error fetching text list: ${error.message}`);
     }
   }
+
+
+
 
   // Method to get text by ID
   static async getTextById(id: string): Promise<any> {
