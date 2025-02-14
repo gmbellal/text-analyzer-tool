@@ -8,6 +8,18 @@ export class TextService {
     const newText = new Text({ content, createdBy });
     return newText.save();
   }
+
+  // Method to get text list
+  static async getTextList(userId: string): Promise<any> {
+    const text = Text.find({ "createdBy.id": userId });
+    return text;
+  }
+
+  // Method to get text by ID
+  static async getTextById(id: string): Promise<any> {
+    const text = Text.findById(id);
+    return text;
+  }
   
   // Method to get the word count
   static async getWordCount(text: string): Promise<number> {

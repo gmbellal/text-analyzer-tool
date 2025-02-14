@@ -5,10 +5,6 @@ import { UserService } from '../services/userService';
 export class AuthController {
   
   static async login(req: Request, res: Response) {
-
-    console.log('Login request received');
-    console.log(req.body.username);
-
     const {username, password } = req.body;
     const user = await UserService.getUser(username);
     if (!user) {
