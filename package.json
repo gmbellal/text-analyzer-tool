@@ -2,10 +2,16 @@
     "name": "text-analyzer-tool",
     "version": "1.0.0",
     "description": "A text analysis tool with API throttling, OAuth2.0 authentication, and log visualization.",
-    "main": "src/app.ts",
+    "main": "dist/app.js",
     "scripts": {
         "start": "ts-node src/app.ts",
-        "dev": "nodemon"
+        "dev": "nodemon",
+        "watch-node": "nodemon dist/app.js",
+        "watch": "concurrently \"npm run watch-ts\" \"npm run watch-node\"",
+        "build": "tsc --build",
+        "watch-ts": "tsc -w",
+        "start-production": "forever start dist/app.js",
+        "stop-production": "forever stop dist/app.js"
     },
     "dependencies": {
         "@types/bcrypt": "^5.0.2",
@@ -28,6 +34,7 @@
         "tsconfig-paths": "^4.2.0",
         "typescript": "^4.9.5",
         "@types/winston": "^2.4.4",
-        "@types/ioredis": "^5.0.0"
+        "@types/ioredis": "^5.0.0",
+        "concurrently": "^5.3.0"
     }
 }
