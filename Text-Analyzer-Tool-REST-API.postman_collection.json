@@ -1,0 +1,561 @@
+{
+	"info": {
+		"_postman_id": "09d270ec-1684-4ef9-827b-5c0bcb1e2e65",
+		"name": "Text-Analyzer-Tool-REST-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23909521"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"GM Bellal Hossain\",\r\n    \"username\": \"gmbellal\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"gmbellal\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Text",
+			"item": [
+				{
+					"name": "Create Text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg4MjYsImV4cCI6MTczOTY1NTIyNn0.lPFfO6hOwPpo5zCBbl0N8nLqhQ36jt8oo8C23L2b3kY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Texts List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg4MjYsImV4cCI6MTczOTY1NTIyNn0.lPFfO6hOwPpo5zCBbl0N8nLqhQ36jt8oo8C23L2b3kY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Text",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/get/67afa528b288787634e0fa97",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"get",
+								"67afa528b288787634e0fa97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg4MjYsImV4cCI6MTczOTY1NTIyNn0.lPFfO6hOwPpo5zCBbl0N8nLqhQ36jt8oo8C23L2b3kY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun. The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun. The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/update/67afba06c67ade21ab579514",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"update",
+								"67afba06c67ade21ab579514"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analysis Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userIds\": [\r\n        \"67ac31d2b3c987edf415d42d\",\r\n        \"67ac3514a95cb259de2385b2\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/analysis-report",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"analysis-report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete text",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg4MjYsImV4cCI6MTczOTY1NTIyNn0.lPFfO6hOwPpo5zCBbl0N8nLqhQ36jt8oo8C23L2b3kY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/delete/67afba15c67ade21ab579517",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"delete",
+								"67afba15c67ade21ab579517"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sentence count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Assume that your company assigned you to build a text analyzer tool. Your task will be to create an application that read, write, update, and delete texts from/to the database. You can use any SQL or NoSQL database of your choice. You should design the application following the proper architecture, design pattern/principles. For a particular texts, The application should be able to generate count of words, characters, sentences, paragraphs, longest word in the paragraph. You may assume that the text contains only English words separated by whitespace. You may also ignore punctuation and treat uppercase and lowercase letters as the same. Use the following text in as an example: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun. You must follow the TDD approach. Generate test coverage report of each functions. ## API to be exposed - Create an API to return the number of words. - Create an API to return the number of characters. - Create an API to return the number of sentences. - Create an API to return the number of paragraphs. - Create an API to return the longest words in paragraphs. ## Requirements - Node.js - HTML - CSS ## Setup - You can use Typescript to implement the application - You may use any open-source database. - You may use any nodejs/javascript based framework to implement the application. ## Using your own Architecture\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/sentence-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"sentence-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Word Count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"The quick brown fox jumps over the lazy dog.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/word-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"word-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Paragraph count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Assume that your company assigned you to build a text analyzer tool. Your task will be to create an application that read, write, update, and delete texts from/to the database. You can use any SQL or NoSQL database of your choice. \\n You should design the application following the proper architecture, design pattern/principles. For a particular texts, The application should be able to generate count of words, characters, sentences, paragraphs, longest word in the paragraph. You may assume that the text contains only English words separated by whitespace. You may also ignore punctuation and treat uppercase and lowercase letters as the same. Use the following text in as an example: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun. You must follow the TDD approach. Generate test coverage report of each functions. ## API to be exposed - Create an API to return the number of words. - Create an API to return the number of characters.\\n - Create an API to return the number of sentences. - Create an API to return the number of paragraphs. - Create an API to return the longest words in paragraphs. ## Requirements - Node.js - HTML - CSS ## Setup - You can use Typescript to implement the application - You may use any open-source database. - You may use any nodejs/javascript based framework to implement the application. ## Using your own Architecture\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/paragraph-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"paragraph-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLongestWord",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"The quick brown fox jumps over the lazy dog.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/longest-word",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"longest-word"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Character count",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg4MjYsImV4cCI6MTczOTY1NTIyNn0.lPFfO6hOwPpo5zCBbl0N8nLqhQ36jt8oo8C23L2b3kY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"The quick brown fox jumps over the lazy dog.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/texts/character-count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"texts",
+								"character-count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWZiNjU0ODVlZDRkOWM5YmZkYjVlMSIsIm5hbWUiOiJHTSBCZWxsYWwgSG9zc2FpbiIsInVzZXJuYW1lIjoiZ21iZWxsYWwiLCJpYXQiOjE3Mzk1Njg3MzUsImV4cCI6MTczOTY1NTEzNX0.S_wA2VW7YlHJQHyNBFm17kpHUMlYoldDe2FRGgZRR3Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
