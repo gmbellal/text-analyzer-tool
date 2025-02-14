@@ -16,6 +16,12 @@ router.post('/sentence-count', TextController.getSentenceCount);
 router.post('/paragraph-count', TextController.getParagraphCount);
 router.post('/longest-word', TextController.getLongestWord);
 
+
+//Report
+router.post('/analysis-report', TextController.getTextAnalysisReport);
+
+
+
 declare module "express-serve-static-core" {
     interface Request {
       user?: any

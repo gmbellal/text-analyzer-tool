@@ -1,5 +1,7 @@
 import { Text } from '../models/textModel';
 import { cache } from '../utils/caching'; 
+import {logError } from '../utils/logVisualizer';
+
 
 export class TextService {
 
@@ -35,6 +37,47 @@ export class TextService {
     const text = Text.findById(id);
     return text;
   }
+
+
+  static async getTextAnalysisReport(userId: []): Promise<any> {
+    try {
+      const  userIds: []  = userId;
+      const cacheKey = `textAnalysisReport:${userIds.join(',')}`;
+      const cachedReport = await cache.get(cacheKey);
+      if (cachedReport) {
+        return JSON.parse(cachedReport);
+      }
+      // Fetch texts from the database for the given users
+      const texts = await Text.find({ "createdBy.id": { $in: userIds } });
+      if (!texts.length) {
+        return null;
+      }
+      // Generate report
+      const report = texts.map((textDoc) => {
+        const text = textDoc.content;
+        return {
+          textId: textDoc._id,
+          createdBy: textDoc.createdBy,
+          wordCount: text.split(/\s+/).filter(Boolean).length,
+          characterCount: text.replace(/\s+/g, '').length,
+          sentenceCount: text.split('.').filter(Boolean).length,
+          paragraphCount: text.split('\n').filter(Boolean).length,
+          longestWord: text.split(/\s+/).reduce((longest, current) => 
+          current.length > longest.length ? current : longest, ''),
+          createdAt: textDoc.createdAt
+        };
+      });
+      // Cache the report for 1 hour
+      await cache.set(cacheKey, JSON.stringify(report), 3600);
+
+      return report
+    } catch (err: any) {
+      logError('Error getting text analysis report'+err.message);
+      return err;
+    }
+  }
+
+
   
   // Method to get the word count
   static async getWordCount(text: string): Promise<number> {

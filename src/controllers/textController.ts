@@ -80,6 +80,18 @@ export class TextController {
 
 
 
+  static async getTextAnalysisReport(req: Request, res: Response) {
+    const userIds = req.body.userIds;
+    TextService.getTextAnalysisReport(userIds).then((report) => {
+      res.status(200).json({report});
+    }).catch((err) => {
+      logError('Error with analysis report '+err.message);
+      res.status(404).json({ error: 'Opps! Something went wrong.' });
+    });
+  }
+
+
+
   static async getWordCount(req: Request, res: Response) {
     const { content } = req.body;
     const wordCount = await TextService.getWordCount(content);
