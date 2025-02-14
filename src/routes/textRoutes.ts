@@ -21,11 +21,4 @@ router.post('/longest-word', TextController.getLongestWord);
 router.post('/analysis-report', TextController.getTextAnalysisReport);
 
 
-
-declare module "express-serve-static-core" {
-    interface Request {
-      user?: any
-    }
-}
-
 export { router as textRoutes };

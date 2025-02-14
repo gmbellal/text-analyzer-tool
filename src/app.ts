@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-// Default route
+// Default route for test purpose
 app.get('/', (req, res) => {
     res.send('GET request to the homepage')
 })
@@ -20,6 +20,15 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRoutes);  // Routes for the user APIs
 app.use('/api/auth', authRoutes);  // Routes for the auth APIs
 app.use('/api/texts', authMiddleware, throttlingMiddleware, textRoutes);  // Routes for the text APIs :: Protected by authMiddleware
+
+
+// Extend the Request interface to include the user object
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: any
+  }
+}
+
 
 // Export the app object
 export { app };
