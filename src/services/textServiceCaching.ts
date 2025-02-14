@@ -9,10 +9,25 @@ export class TextService {
     return newText.save();
   }
 
+
   // Method to get text list
   static async getTextList(userId: string): Promise<any> {
-    const text = Text.find({ "createdBy.id": userId });
-    return text;
+    const cacheKey = `textList:${userId}`;
+    try {
+      // Try fetching from cache
+      const cachedData = await cache.get(cacheKey);
+      if (cachedData) {
+        console.log('Cache hit');
+        return JSON.parse(cachedData);
+      }
+      console.log('Cache miss, fetching from DB');
+      const textList = await Text.find({ "createdBy.id": userId });
+      // Store the data in cache for future requests (1 hour)
+      await cache.set(cacheKey, JSON.stringify(textList), 3600);
+      return textList;
+    } catch (error: any) {
+      throw new Error(`Error fetching text list: ${error.message}`);
+    }
   }
 
   // Method to get text by ID
