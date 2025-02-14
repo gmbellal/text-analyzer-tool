@@ -28,7 +28,7 @@ This project provides a set of APIs to analyze text, including word count, chara
 
 1. Clone the repository
 2. Run `npm install` to install dependencies
-3. Set up MongoDB & Redis connection in `.env`
+3. Copy `.env.dev` as `.env` Set up MAX_THROTTL_LIMIT (As your preference), MongoDB & Redis connection in `.env`
 4. Run the app with `npm run dev`
 5. Run the app with `npm run watch` for watch mode
 6. Run the app with `npm run build` for build project
