@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {logError } from '../utils/logVisualizer';
-import { TextService } from '../services/textServiceCaching';
+import { TextService } from '../services/textService';
 
 
 export class TextController {
