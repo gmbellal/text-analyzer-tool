@@ -22,10 +22,10 @@
   },
   "include": [
     "src/**/*",  // Include all source files
-    "test/**/*"  // Include test files in the test directory
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "test"
   ]
 }
